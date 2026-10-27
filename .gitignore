@@ -39,3 +39,12 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Local configuration and duplicate project copy
+.env
+.env.*
+!.env.example
+!.env.*.example
+supabase/.temp/
+supabase/.branches/
+/BiteRunner/

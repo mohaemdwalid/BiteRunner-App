@@ -5,26 +5,74 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
+    "scheme": "biterunner",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF4500"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.biterunner.app",
+      "infoPlist": {
+        "UIStatusBarStyle": "dark-content",
+        "NSLocationWhenInUseUsageDescription": "BiteRunner needs your location to show nearby restaurants and track deliveries.",
+        "NSUserNotificationsUsageDescription": "BiteRunner sends notifications for order updates and delivery tracking."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FF4500"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.biterunner.app",
+      "permissions": ["ACCESS_FINE_LOCATION", "RECEIVE_BOOT_COMPLETED"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#FF4500"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "whenInUsePermission": "BiteRunner needs your location to show nearby restaurants and track deliveries."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "BiteRunner needs access to your photos to set menu item images."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FF4500",
+          "image": "./assets/splash-icon.png",
+          "imageResizeMode": "contain",
+          "splashFullScreen": true,
+          "splashStatusBarHidden": true
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.com.biterunner.app",
+          "enableGooglePay": false
+        }
+      ]
+    ]
   }
 }
